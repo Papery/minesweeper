@@ -25,7 +25,7 @@ public:
 
     Board(int height, int width, int numMines);
 
-    void print(bool showAll);
+    void print(bool showAll) const;
 };
 
 #endif //MINESWEEPER_BOARD_H

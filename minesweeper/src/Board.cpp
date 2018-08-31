@@ -59,7 +59,7 @@ void Board::placeMines()
     }
 }
 
-void Board::print(bool showAll)
+void Board::print(bool showAll) const
 {
     std::cout << std::endl;
 

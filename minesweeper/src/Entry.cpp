@@ -1,6 +1,6 @@
 #include "Entry.h"
 
-void Entry::printData()
+void Entry::printData() const
 {
     if (data == MINE)
     {
@@ -12,7 +12,7 @@ void Entry::printData()
     }
 }
 
-void Entry::printStatus()
+void Entry::printStatus() const
 {
     if (status == Status::unknown)
     {

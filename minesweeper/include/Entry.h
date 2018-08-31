@@ -18,9 +18,9 @@ public:
 
     Status status;
 
-    void printData();
+    void printData() const;
 
-    void printStatus();
+    void printStatus() const;
 };
 
 #endif //MINESWEEPER_ENTRY_H
