@@ -15,7 +15,6 @@ void Board::initialize(const int height, const int width, const int numMines)
     }
 
     placeMines();
-    print(true);
     print(false);
 }
 
