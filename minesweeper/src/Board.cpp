@@ -2,8 +2,8 @@
 
 Board::Board(const int height, const int width, const int numMines)
 {
-    m_height = std::min(height, MAX_HEIGHT);
-    m_width = std::min(width, MAX_WIDTH);
+    m_height = std::min(height, MAX_HEIGHT_BOARD);
+    m_width = std::min(width, MAX_WIDTH_BOARD);
     m_numMines = std::min(numMines, (int) (m_height * m_width * 0.5));
 
     m_fields.resize(m_height);
@@ -89,41 +89,14 @@ void Board::print(bool showAll)
             }
             else if (showAll)
             {
-                printEntryData(m_fields[y][x]);
+                m_fields[y][x].printData();
             }
             else
             {
-                printEntryStatus(m_fields[y][x]);
+                m_fields[y][x].printStatus();
             }
         }
         std::cout << std::endl;
     }
 }
 
-void Board::printEntryData(const Entry& entry)
-{
-    if (entry.data == MINE)
-    {
-        std::cout << "x  ";
-    }
-    else
-    {
-        std::cout << entry.data << "  ";
-    }
-}
-
-void Board::printEntryStatus(const Entry& entry)
-{
-    if (entry.status == Status::unknown)
-    {
-        std::cout << "?  ";
-    }
-    else if (entry.status == Status::mine)
-    {
-        std::cout << "*  ";
-    }
-    else
-    {
-        printEntryData(entry);
-    }
-}

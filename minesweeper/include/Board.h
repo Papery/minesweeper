@@ -5,26 +5,11 @@
 #include <vector>
 #include <random>
 
-enum Status
-{
-    mine, revealed, unknown
-};
-
-struct Entry
-{
-    int data;
-    Status status;
-};
+#include "Entry.h"
 
 class Board
 {
 private:
-
-    const int MINE = -1;
-
-    const int MAX_HEIGHT = 100;
-
-    const int MAX_WIDTH = 100;
 
     int m_height;
 
@@ -36,16 +21,11 @@ private:
 
     void placeMines();
 
-    void print(bool showAll);
-
-    void printEntryData(const Entry& entry);
-
-    void printEntryStatus(const Entry& entry);
-
 public:
 
     Board(int height, int width, int numMines);
 
+    void print(bool showAll);
 };
 
 #endif //MINESWEEPER_BOARD_H
