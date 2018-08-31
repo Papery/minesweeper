@@ -7,6 +7,11 @@
 
 #include "Entry.h"
 
+enum Outcome
+{
+    valid, exploded, won, outofbound
+};
+
 class Board
 {
 private:
@@ -17,13 +22,20 @@ private:
 
     int m_numMines;
 
+    int m_numRevealedEntries;
+
     std::vector<std::vector<Entry> > m_fields;
 
     void placeMines();
+    void reveal(int y, int x);
 
 public:
 
-    Board(int height, int width, int numMines);
+    Board() = default;
+
+    void initialize(int height, int width, int numMines);
+
+    Outcome doMove(int y, int x, bool markAsMine);
 
     void print(bool showAll) const;
 };
