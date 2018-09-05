@@ -50,31 +50,33 @@ void Game::move()
     std::cout << "Enter x coordinate: ";
     std::cin >> x;
 
-    std::cout << "Mark as mine (1) or reveal (0): ";
+    std::cout << "Mark as markedAsMine (1) or reveal (0): ";
     std::cin >> markAsMine;
 
-    Outcome outcome = m_board.doMove(y, x, markAsMine);
+    try
+    {
+        BoardState boardState = m_board.doMove(y, x, markAsMine);
+        if (boardState == BoardState::valid)
+        {
+            return;
+        }
+        else if (boardState == BoardState::exploded)
+        {
+            std::cout << "You exploded!" << std::endl;
+            m_running = false;
+        }
+        else if (boardState == BoardState::won)
+        {
+            std::cout << "You won!" << std::endl;
+            m_running = false;
+        }
 
-    if (outcome == Outcome::valid)
-    {
-        return;
+        std::cout << "Do you want to start a new game? (yes = 1, no = 0) ?";
+        std::cin >> m_continue;
     }
-    else if (outcome == Outcome::outofbound)
+    catch (const std::invalid_argument& invalid_argument)
     {
-        std::cout << "Invalid coordinates. No move made." << std::endl;
-        return;
+        std::cout << invalid_argument.what() << " ";
+        std::cout << "No move made." << std::endl;
     }
-    else if (outcome == Outcome::exploded)
-    {
-        std::cout << "You exploded!" << std::endl;
-        m_running = false;
-    }
-    else if (outcome == Outcome::won)
-    {
-        std::cout << "You won!" << std::endl;
-        m_running = false;
-    }
-
-    std::cout << "Do you want to start a new game? (yes = 1, no = 0) ?";
-    std::cin >> m_continue;
 }

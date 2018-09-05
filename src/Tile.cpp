@@ -1,6 +1,6 @@
-#include "Entry.h"
+#include "Tile.h"
 
-void Entry::printData() const
+void Tile::printData() const
 {
     if (data == MINE)
     {
@@ -12,13 +12,13 @@ void Entry::printData() const
     }
 }
 
-void Entry::printStatus() const
+void Tile::printStatus() const
 {
-    if (status == Status::unknown)
+    if (status == TileStatus::unknown)
     {
         std::cout << "?  ";
     }
-    else if (status == Status::mine)
+    else if (status == TileStatus::markedAsMine)
     {
         std::cout << "*  ";
     }
@@ -27,3 +27,4 @@ void Entry::printStatus() const
         printData();
     }
 }
+

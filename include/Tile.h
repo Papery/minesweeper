@@ -5,18 +5,18 @@
 
 #include "constants.h"
 
-enum Status
+enum TileStatus
 {
-    mine, revealed, unknown
+    revealed, unknown, markedAsMine
 };
 
-class Entry
+class Tile
 {
 public:
 
     int data;
 
-    Status status;
+    TileStatus status;
 
     void printData() const;
 

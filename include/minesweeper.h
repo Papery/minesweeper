@@ -1,7 +1,7 @@
 #ifndef MINESWEEPER_MINESWEEPER_H
 #define MINESWEEPER_MINESWEEPER_H
 
-#include "Entry.h"
+#include "Tile.h"
 
 #include "Board.h"
 

@@ -3,10 +3,10 @@ project(minesweeper)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_subdirectory(minesweeper/)
+add_subdirectory(src)
+add_subdirectory(test)
 
-set(SOURCE_FILES main.cpp)
-add_executable(Minesweeper ${SOURCE_FILES})
+add_executable(Minesweeper main.cpp)
 target_link_libraries(Minesweeper minesweeper)
 
 
